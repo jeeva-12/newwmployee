@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class AddComponent {
   username=""
   password=""
 
-  constructor(private api:ApiService){}
+  constructor(private api:ApiService,private route:Router){}
 
   readValue=()=>
   {
@@ -25,19 +26,22 @@ export class AddComponent {
     console.log(data)
     this.api.addCourse(data).subscribe(
       (response:any)=>{
-        console.log(response)
-
-        if (response.status=="success") {
-          alert("Employee Added")
-          this.name=""
-          this.designation=""
-
-          
-        } else {
-          alert("Something Went Wrong")
+      
         }
-      }
+      
     )
+
+    this.empcode=""
+    this.name=""
+    this.designation=""
+    this.salary=""
+    this.company=""
+    this.mobile=""
+    this.username=""
+    this.password=""
+    console.log("Success")
+    this.route.navigate(["/"])
+    console.log(data)
   }
 
 
